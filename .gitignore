@@ -1,0 +1,13 @@
+# Логи
+*.log
+*.out
+
+# Секреты
+twitch_tokens.json
+
+# Данные
+da_data.json
+followers_nicknames.json
+
+# Служебные файлы
+*.file

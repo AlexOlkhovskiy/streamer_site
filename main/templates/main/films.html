@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Фильмы</title>
+    <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}" type="image/x-icon">
+    <script type="text/javascript" src="{% static 'main/js/films.js' %}"></script>
+    <link type="text/css" href="{% static 'main/css/films.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <div id="home-link"><a href="{% url 'main_page' %}"><img id="homepage-icon" src="{% static 'main/images/favicon.png' %}" title="на главную страницу"></a></div>
+    <div class="tabs-top-panel">
+        <div class="tabs">
+            <div class="tab active" id="tab1" onclick="changeContent('1')">Посмотрели</div>
+            <div class="tab" id="tab2" onclick="changeContent('2')">Хочу посмотреть</div>
+            <div class="tab" id="tab3" onclick="changeContent('3')">Мой тирлист жанров</div>
+            <div class="tab" id="tab4" onclick="changeContent('4')">Правила киноаукциона</div>
+            <div class="tab" id="tab5" onclick="changeContent('5')">Справка</div>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="content" id="content1">
+            <div class="option-panel">
+                <div class="option-block">
+                    <div class="inline-container">
+                        <input type="checkbox" id="checkbox1" name="checkbox1" value="all" onchange="preventUncheck(this); toggleReady(this)" checked>
+                        <label for="checkbox1">Все</label>
+                    </div>
+                    <div class="inline-container">
+                        <input type="checkbox" id="checkbox2" name="checkbox2" value="ready" onchange="toggleReady(this)">
+                        <label for="checkbox2">Аук</label>
+                    </div>
+                    <div class="inline-container">
+                        <input type="checkbox" id="checkbox3" name="checkbox3" value="not-ready" onchange="toggleReady(this)">
+                        <label for="checkbox3">Выкуп</label>
+                    </div>
+                    <br/><br/>
+                    Выберите месяц:<br/>
+                    <div class="inline-container">
+                        <select id="month-select" class="form-control col-md-4 mb-3" onchange="filterByMonth()">
+                            <option value="all">Все результаты</option>
+                            {% for month_year in months_list %}
+                            <option value="{{ month_year }}">{{ month_year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <br/><br/>
+                    Выберите никнейм:
+                    <div class="inline-container" id="nickname-select-div">
+                        <select id="nickname-select" class="form-control col-md-4 mb-3" onchange="filterByNickname()">
+                            <option value="all">Все результаты</option>
+                            {% for nickname in nickname_list %}
+                            <option value="{{ nickname }}">{{ nickname }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <br/><br/>
+                    <div class="inline-container results-counter">
+                        Всего записей: <span>{{ results_count }}</span>
+                    </div>
+                    <div class="statistics-panel">
+                        Частота выпадения:<br>
+                        Топ 1: {{ statistics.tops.1.percent }}% ({{ statistics.tops.1.count }})<br>
+                        Топ 2: {{ statistics.tops.2.percent }}% ({{ statistics.tops.2.count }})<br>
+                        Топ 3: {{ statistics.tops.3.percent }}% ({{ statistics.tops.3.count }})<br>
+                        Топ 4: {{ statistics.tops.4.percent }}% ({{ statistics.tops.4.count }})<br>
+                        Топ 5: {{ statistics.tops.5.percent }}% ({{ statistics.tops.5.count }})<br>
+                        Остальное: {{ statistics.tops.others.percent }}% ({{ statistics.tops.others.count }})<br><br>
+                        По оценкам на IMDb:<br>
+                        >8: {{ statistics.imdb.8.percent }}% ({{ statistics.imdb.8.count }})<br>
+                        7-8: {{ statistics.imdb.7.percent }}% ({{ statistics.imdb.7.count }})<br>
+                        6-7: {{ statistics.imdb.6.percent }}% ({{ statistics.imdb.6.count }})<br>
+                        5-6: {{ statistics.imdb.5.percent }}% ({{ statistics.imdb.5.count }})<br>
+                        <5: {{ statistics.imdb.4.percent }}% ({{ statistics.imdb.4.count }})<br><br>
+                        По годам:<br>
+                        >2020: {{ statistics.years.2020.percent }}% ({{ statistics.years.2020.count }})<br>
+                        2010-2020: {{ statistics.years.2010.percent }}% ({{ statistics.years.2010.count }})<br>
+                        2000-2010: {{ statistics.years.2000.percent }}% ({{ statistics.years.2000.count }})<br>
+                        1990-2000: {{ statistics.years.1990.percent }}% ({{ statistics.years.1990.count }})<br>
+                        1980-1990: {{ statistics.years.1980.percent }}% ({{ statistics.years.1980.count }})<br>
+                        <1980: {{ statistics.years.others.percent }}% ({{ statistics.years.others.count }})<br>
+                    </div>
+                </div>
+            </div>
+            <div class="main-block">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="datetime-col">Дата аука</th>
+                                <th class="film-name-col">Название</th>
+                                <th class="year-col">Год</th>
+                                <th class="top-col">Топ на ауке</th>
+                                <th class="chance-col">Шанс выпадения</th>
+                                <th class="winners-col">Кто заказал</th>
+                                <th class="kp-rating-col">КП</th>
+                                <th class="imdb-raiting-col">IMDb</th>
+                                <th class="kp-link-col">Кинопоиск</th>
+                                <th class="view-type-col">Аук/выкуп</th>
+                                <th class="auction-type-col">Тип аука</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-table-body">
+                            {% for id, film in data.items %}
+                            <tr class="{{ film.film_class }} month-active nickname-active">
+                                <td class="datetime-col">{{ film.datetime }}</td>
+                                <td class="film-name-col">{{ film.film_name }}</td>
+                                <td class="year-col">{{ film.film_year }}</td>
+                                <td class="top-col">{{ film.top_on_auction }}</td>
+                                <td class="chance-col">{{ film.chance_to_win }}</td>
+                                <td class="winners-col">{{ film.winners_nicknames }}</td>
+                                <td class="kp-rating-col">{{ film.kinopoisk_rating }}</td>
+                                <td class="imdb-raiting-col">{{ film.imdb_rating }}</td>
+                                <td class="kp-link-col"><a href="https://www.kinopoisk.ru/film/{{ film.kinopoisk_id }}" target="_blank">{{ film.kinopoisk_id }}</a></td>
+                                <td class="view-type-col">{{ film.view_type }}</td>
+                                <td class="auction-type-col">{{ film.auction_type }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="content" id="content2">
+            <div class="info-block">
+                {{ want_watch_text|safe }}
+                <br/><br/><br/>
+                <div id="buttons-box">
+                    <button onclick="toggleSpoilersAll('open')">Открыть все</button>
+                    <button onclick="toggleSpoilersAll('close')">Закрыть все</button>
+                </div>
+            </div>
+            <div class="film-main-container">
+                {% for film in want_to_watch %}
+                <details onclick="toggleSpoilers(event)">
+                    <summary>{{ film }}</summary>
+                    <div class="film-content-box">
+                        <div class="film-container">
+                            <div class="image-container">
+                                <img class="film-poster" src="{{ film.poster_url_preview }}" title="на главную страницу">
+                            </div>
+                            <div class="text-container">
+                                <div class="text-block">Название: {{ film.name }}</div>
+                                <hr/>
+                                <div class="text-block">Год: {{ film.film_year }}</div>
+                                <hr/>
+                                <div class="text-block">Жанр: {{ film.film_genres }}</div>
+                                <hr/>
+                                <div class="text-block">Длительность: {{ film.film_length_str }}</div>
+                                <hr/>
+                                <div class="text-block">Ссылка на кинопоиск: &nbsp;<a href="https://www.kinopoisk.ru/film/{{ film.kinopoisk_id }}/" target="_blank">{{ film.kinopoisk_id }}</a></div>
+                                <hr/>
+                                <div class="text-block">Оценка КП: {{ film.rating_kinopoisk }}</div>
+                                <hr/>
+                                <div class="text-block">Оценка IMDb: {{ film.rating_imdb }}</div>
+                                <hr/>
+                                <div class="text-block">{{ film.description }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="content" id="content3"><img id="films-tierlist" src="{% static 'main/images/films-tierlist.png' %}" title="тирлист жанров"></div>
+        <div class="content" id="content4"><div>{{ rules|safe }}</div></div>
+        <div class="content" id="content5">
+            <div class="info-text">
+                <p>ТАБЛИЦА С ПРОСМОТРЕННЫМИ ФИЛЬМАМИ</p>
+                <div class="image-info-container">
+                    <img class="image-for-info" src="{% static 'main/images/films-reference-1.png' %}"><br>
+                </div>
+                <br>
+                <span class="red-text" style="font-weight: bold;">1</span> - дата проведения аукциона.
+                Может не совпадать с датой просмотра фильма. В случае выкупа фильма дата аука = дата просмотра.<br><br>
+                <span class="red-text" style="font-weight: bold;">2</span> - русское название фильма.<br><br>
+                <span class="red-text" style="font-weight: bold;">3</span> - год выхода фильма.<br><br>
+                <span class="red-text" style="font-weight: bold;">4</span> - какой топ выиграл на аукционе, т.е. на каком месте по баллам
+                находился выигравший фильм в таблице аукциона. Если выпал фильм, у которого равное количество баллов с
+                другими фильмами, тогда берётся средняя позиция среди этих фильмов. Например, если фильмы со 2 по 6 позиции
+                имеют равное количество баллов, тогда считаем 2 плюс 6 делить на 2, среднее арифметическое будет 4, если
+                число дробное, то округление в меньшую сторону.<br><br>
+                <span class="red-text" style="font-weight: bold;">5</span> - какой был шанс выпадения фильма на аукционе.<br><br>
+                <span class="red-text" style="font-weight: bold;">6</span> - никнейм того, кто донатил или вкидывал баллы на фильм.
+                Если было много человек, то в учёт идут самые крупные донатеры.<br><br>
+                <span class="red-text" style="font-weight: bold;">7</span> - оценка фильма на кинопоиске (обновляется раз в сутки).<br><br>
+                <span class="red-text" style="font-weight: bold;">8</span> - оценка фильма на IMDb (обновляется раз в сутки).<br><br>
+                <span class="red-text" style="font-weight: bold;">9</span> - ссылка на страницу фильма на кинопоиске.<br><br>
+                <span class="red-text" style="font-weight: bold;">10</span> - выиграл ли фильм на аукционе или был выкуп фильма без
+                аукциона. Как выкуп помечены так же те фильмы, которые выпали в <a href="{% url 'roulette' %}">донатной рулетке</a>.<br><br>
+                <span class="red-text" style="font-weight: bold;">11</span> - тип аукциона. Балловый - голосование за фильмы было только
+                за баллы канала. Денежный - голосование за фильмы было только за донаты. Смешанный - голосование было
+                как за баллы канала так и за донаты.<br><br>
+                <p>БЛОК С ФИЛЬТРАМИ И БЛОК СО СТАТИСТИКОЙ</p>
+                <div class="image-info-container">
+                    <img class="image-for-info image-2" src="{% static 'main/images/films-reference-2.png' %}"><br>
+                </div>
+                <br>
+                <span class="red-text" style="font-weight: bold;">1</span> - общее количество фильмов по выбранным фильтрам.<br><br>
+                <span class="red-text" style="font-weight: bold;">2</span> - фильтр по никнейму, кто заказал фильм.<br><br>
+                <span class="red-text" style="font-weight: bold;">3</span> - фильтр по датам, когда смотрели фильм.<br><br>
+                <span class="red-text" style="font-weight: bold;">4</span> - фильтр для отображения фильмов выпавших на аукционах +
+                фильмов, выкупленных за донат (всех фильмов).<br><br>
+                <span class="red-text" style="font-weight: bold;">5</span> - фильтр для отображения только фильмов, выпавших на аукционах.<br><br>
+                <span class="red-text" style="font-weight: bold;">6</span> - фильтр для отображения только фильмов, выкупленных за донат.<br><br>
+                <span class="red-text" style="font-weight: bold;">7</span> -
+                частота выпадения фильма из определённого топа в % от всех фильмов выигрывавших на аукционах, за исключением тех фильмов,
+                у которых не известен топ. Выкупы в учёт не идут. Если выпал фильм, у которого равное количество баллов с
+                другими фильмами, тогда берётся средняя позиция среди этих фильмов. Например, если фильмы со 2 по 6 позиции
+                имеют равное количество баллов, тогда считаем 2 плюс 6 делить на 2, среднее арифметическое будет 4, если
+                число дробное, то округление в меньшую сторону. В скобках указано количество фильмов.<br><br>
+                <span class="red-text" style="font-weight: bold;">8</span> -
+                частота выпадения фильмов из разных диапазонов оценок с IMDb, за исключением тех фильмов, у которых нет оценок
+                на IMDb. Диапазоны включают в себя нижнюю границу и не включают верхнюю, например в диапазон 7-8 попадут
+                фильмы с оценкой 7 и не попадут с оценкой 8. Были взяты оценки именно с IMDb, так как некоторые фильмы не
+                имеют оценок на Кинопоиске. Фильмы с выкупа в учёт не идут. В скобках указано количество фильмов.<br><br>
+                <span class="red-text" style="font-weight: bold;">9</span> -
+                частота выпадения фильмов по году выхода в прокат. Диапазоны включают в себя нижнюю границу и не включают
+                верхнюю, например в диапазон 2010-2020 попадут фильмы 2010 года и не попадут 2020 года. Если это сериал,
+                то учитывается год выхода первого сезона. Фильмы с выкупа в учёт не идут. В скобках указано количество фильмов.<br><br>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById('tab1').click();
+    window.onload = function() {
+        toggleReady(document.getElementById('checkbox1'));
+    };
+</script>
+</html>

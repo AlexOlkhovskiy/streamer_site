@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url('../fonts/Lato-Regular.ttf') format('opentype'),
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+    height: 100vh;
+    background-color: #f19cbb;
+    font-family: 'Lato-Regular', sans-serif;
+    margin: 0;
+}
+
+.content {
+    height: 100%;
+    display: flex; /* Скрываем все содержимое по умолчанию */
+    flex-wrap: wrap; /* Позволяет переносить элементы на следующий ряд */
+    overflow-y: auto;
+}
+
+/* кастомный скролл */
+.content::-webkit-scrollbar {
+    width: 1vw;
+}
+
+.content::-webkit-scrollbar-track {
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 7px;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 2px solid white;
+    border-radius: 7px;
+}
+
+.info-text {
+    width: 70vw;
+    height: 98%;
+    margin: auto;
+    font-family: 'Lato-Regular', sans-serif;
+    font-size: 25px;
+}
+
+.info-text p {
+    text-align: center;
+}
+
+.image-info-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+.shadow {
+      box-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+a {
+    text-decoration: none;
+    color: #551A8B;
+}

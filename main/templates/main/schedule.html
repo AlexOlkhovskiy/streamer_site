@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание стримов</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}" type="image/x-icon">
+    <link type="text/css" href="{% static 'main/css/schedule.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <div class="main-container">
+        <div id="home-link"><a href="{% url 'main_page' %}"><img id="homepage-icon" src="{% static 'main/images/favicon.png' %}" title="на главную страницу"></a></div>
+        <div id="question">
+            <img id="question-icon" src="{% static 'main/images/question.png' %}">
+            <div id="question-popup">{{ question_text }}</div>
+        </div>        
+	<div class="text-blocks-wrapper">
+            <div class="text-block" id="day-1">{{ data.monday }}</div>
+            <div class="text-block" id="day-2">{{ data.tuesday }}</div>
+            <div class="text-block" id="day-3">{{ data.wednesday }}</div>
+            <div class="text-block" id="day-4">{{ data.thursday }}</div>
+            <div class="text-block" id="day-5">{{ data.friday }}</div>
+            <div class="text-block" id="day-6">{{ data.saturday }}</div>
+            <div class="text-block" id="day-7">{{ data.sunday }}</div>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const icon = document.getElementById('question-icon');
+      const popup = document.getElementById('question-popup');
+
+      icon.addEventListener('mouseover', function() {
+        popup.style.display = 'block';
+      });
+
+      icon.addEventListener('mouseout', function() {
+        popup.style.display = 'none';
+      });
+    });
+</script>
+</html>

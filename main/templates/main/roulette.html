@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты рулетки</title>
+    <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}" type="image/x-icon">
+    <script type="text/javascript" src="{% static 'main/js/scripts.js' %}"></script>
+    <link type="text/css" href="{% static 'main/css/main.css' %}" rel="stylesheet" />
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102653055, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102653055" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+<div class="main-container">
+  <div class="left-panel">
+    <div class="option-block">
+        <div class="inline-container">
+          <input type="checkbox" id="checkbox1" name="checkbox1" value="all" onchange="preventUncheck(this); toggleReady(this)" checked>
+          <label for="checkbox1">Все</label>
+        </div>
+        <div class="inline-container">
+          <input type="checkbox" id="checkbox2" name="checkbox2" value="ready" onchange="toggleReady(this)">
+          <label for="checkbox2">Выполненные</label>
+        </div>
+        <div class="inline-container">
+          <input type="checkbox" id="checkbox3" name="checkbox3" value="not-ready" onchange="toggleReady(this)">
+          <label for="checkbox3">Невыполненные</label>
+        </div>
+        <br><br>
+        Выберите месяц:
+        <div class="inline-container">
+            <select id="month-select" class="form-control col-md-4 mb-3" onchange="filterByMonth()">
+                <option value="all">Все результаты</option>
+                {% for month_year in months_list %}
+                    <option value="{{ month_year }}">{{ month_year }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br><br>
+        Выберите никнейм:
+        <div class="inline-container">
+            <select id="nickname-select" class="form-control col-md-4 mb-3" onchange="filterByNickname()">
+                <option value="all">Все результаты</option>
+                {% for nickname in nickname_list %}
+                <option value="{{ nickname }}">{{ nickname }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br><br>
+        Выберите награду:
+        <div class="inline-container">
+            <select id="result-select" class="form-control col-md-4 mb-3" onchange="filterByResult()">
+                <option value="all">Все награды</option>
+                {% for result in results_list %}
+                <option value="{{ result }}">{{ result }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br><br>
+        <div class="inline-container results-counter">
+            <span>Всего записей: {{ results_count }}</span>
+            <div id="home-link"><a href="{% url 'main_page' %}"><img id="homepage-icon" src="{% static 'main/images/favicon.png' %}" title="на главную страницу"></a></div>
+            <div id="percent">
+                <img id="percent-icon" src="{% static 'main/images/percent.png' %}">
+                <div id="percent-popup"><pre>{{ percent_text|safe }}</pre></div>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="inline-container info-block">
+	    {{ info_text|safe }}
+        </div>
+    </div>
+  </div>
+  <div class="main-block">
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="datetime-col">Дата и время</th>
+                    <th class="nickname-col">Никнейм</th>
+                    <th class="ready-col">Выполнили</th>
+                    <th class="result-col">Что выпало</th>
+                    <th class="order-col">Что заказал</th>
+                </tr>
+            </thead>
+            <tbody id="results-table-body">
+                {% for id, result in data.items %}
+                    <tr class="{{ result.ready_class }} month-active nickname-active result-active">
+                        <td class="datetime-col">{{ result.datetime }}</td>
+                        <td class="nickname-col">{{ result.username }}</td>
+                        <td class="ready-col">{{ result.ready }}</td>
+                        <td class="result-col">{{ result.result }}</td>
+                        <td class="order-col">{{ result.order }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+    window.onload = function() {
+        toggleReady(document.getElementById('checkbox1'));
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const icon = document.getElementById('percent-icon');
+      const popup = document.getElementById('percent-popup');
+
+      icon.addEventListener('mouseover', function() {
+        popup.style.display = 'block';
+      });
+
+      icon.addEventListener('mouseout', function() {
+        popup.style.display = 'none';
+      });
+    });
+</script>
+</html>

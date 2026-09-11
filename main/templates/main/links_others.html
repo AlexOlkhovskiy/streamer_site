@@ -1,0 +1,113 @@
+{% load static %}
+{% load text_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ссылки</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="{% static 'main/css/links_others.css' %}" rel="stylesheet" />
+    <link rel="icon" href="{% static 'main/images/favicon.png' %}" type="image/png">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102653055, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102653055" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+    <div id="home-link"><a href="{% url 'main_page' %}"><img id="homepage-icon" src="{% static 'main/images/favicon.png' %}" title="на главную страницу"></a></div>
+    <div class="container">
+            <a href="{{ data.2.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/twitch.png' %}" alt="Картинка">
+                <span>
+                    {{ data.2.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.3.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/vk_live.png' %}" alt="Картинка">
+                <span>
+                    {{ data.3.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.4.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/telegram.png' %}" alt="Картинка">
+                <span class="small-text">
+                    {{ data.4.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.24.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/telegram.png' %}" alt="Картинка">
+                <span>
+                    {{ data.24.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.6.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/telegram.png' %}" alt="Картинка">
+                <span class="middle-text">
+                    {{ data.6.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.5.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/telegram.png' %}" alt="Картинка">
+                <span>
+                    {{ data.5.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.7.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/youtube.png' %}" alt="Картинка">
+                <span>
+                    {{ data.7.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.8.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/tiktok.png' %}" alt="Картинка">
+                <span>
+                    {{ data.8.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.9.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/tiktok.png' %}" alt="Картинка">
+                <span>
+                    {{ data.9.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.10.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/kinopoisk.png' %}" alt="Картинка">
+                <span>
+                    {{ data.10.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.12.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/shikimori.png' %}" alt="Картинка">
+                <span>
+                    {{ data.12.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.20.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/donationalerts.png' %}" alt="Картинка">
+                <span class="small-text">
+                    {{ data.20.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.21.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/memealerts.png' %}" alt="Картинка">
+                <span>
+                    {{ data.21.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.19.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/telegram.png' %}" alt="Картинка">
+                <span>
+                    {{ data.19.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.17.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/discord.png' %}" alt="Картинка">
+                <span>
+                    {{ data.17.text|italic }}
+                </span>
+            </div></a>
+            <a href="{{ data.13.link }}" target="_blank"><div class="block"><img src="{% static 'main/images/steam.png' %}" alt="Картинка">
+                <span>
+                    {{ data.13.text|italic }}
+                </span>
+            </div></a>
+    </div>
+</body>
+</html>

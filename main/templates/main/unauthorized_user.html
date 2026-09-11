@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Неавторизованный пользователь</title>
+    <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}" type="image/x-icon">
+    <link type="text/css" href="{% static 'main/css/default.css' %}" rel="stylesheet" />
+</head>
+<body>
+<div class="main-container">
+        <div id="home-link"><a href="{% url 'main_page' %}"><img id="homepage-icon" src="{% static 'main/images/favicon.png' %}" title="на главную страницу"></a></div>
+        <div class="info-text">Тут скоро что-то будет. Пока что подписывайтесь на канал.</div>
+        <a class="animation" href="https://www.twitch.tv/yrarami" target="_blank">twitch.tv/yrarami</a>
+    </div>
+</body>
+</html>

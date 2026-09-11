@@ -1,0 +1,82 @@
+{% load static %}
+{% load text_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ссылки</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="{% static 'main/css/links.css' %}" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="{% static 'main/css/links_mobile.css' %}" media="screen and (orientation: portrait)">
+    <link rel="icon" href="{% static 'main/images/favicon.png' %}" type="image/png">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102653055, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102653055" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+    <div id="home-link">
+        <a href="{% url 'main_page' %}">
+            <img id="homepage-icon" src="{% static 'main/images/favicon.png' %}" title="на главную страницу">
+        </a>
+    </div>
+
+    <div class="container">
+
+        <!-- TELEGRAM -->
+        <a href="{{ data.4.link }}" target="_blank">
+            <div class="block">
+                <img src="{% static 'main/images/telegram.png' %}" class="block-icon" alt="">
+                <div class="block-content">
+                    <span>{{ data.4.text|italic|linebreaksbr }}</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- PRIVATE -->
+        <a href="{{ data.25.link }}" target="_blank">
+            <div class="block private">
+                <img src="{% static 'main/images/private.png' %}" class="block-icon" alt="">
+                <div class="block-content">
+                    <span>{{ data.25.text|italic|linebreaksbr }}</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- TWITCH -->
+        <a href="{{ data.2.link }}" target="_blank">
+            <div class="block">
+                <img src="{% static 'main/images/twitch.png' %}" class="block-icon" alt="">
+                <div class="block-content">
+                    <span>{{ data.2.text|italic|linebreaksbr }}</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- DONATE -->
+        <a href="{{ data.22.link }}" target="_blank">
+            <div class="block donate">
+                <img src="{% static 'main/images/donate.png' %}" class="block-icon" alt="">
+                <div class="block-content">
+                    <span>{{ data.22.text|italic|linebreaksbr }}</span>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+</body>
+</html>

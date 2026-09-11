@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f19cbb;
+}
+
+/* Контейнер */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.5vh;
+    padding: 5vh 0 5vh 0;
+}
+
+.container > a {
+    display: flex;
+    justify-content: flex-start;
+    text-decoration: none;
+}
+
+.container > a:first-child .block {
+    margin-top: 8vh;
+}
+
+/* Блок */
+.block {
+    width: 50vw;
+    max-width: 700px;
+    min-width: 340px;
+    margin-bottom: 2.5vh;
+    position: relative;
+    transition: transform 0.15s ease;
+}
+
+.block:hover {
+    transform: scale(1.015);
+    cursor: pointer;
+}
+
+/* Контент блока */
+.block-content {
+    position: relative;
+    background-color: #ffdde7;
+    border: 6px solid white;
+    border-radius: 32px;
+    padding: 16px 24px 16px 110px;
+    line-height: 1.3;
+}
+
+/* Текст */
+.block-content span {
+    display: block;
+    font-size: 1.2em;
+    color: black;
+}
+
+/* Иконка */
+.block-icon {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 26px;
+    object-fit: cover;
+    display: block;
+    z-index: 2;
+    transition: inherit; /* наследует масштаб блока */
+}
+
+/* PRIVATE — градиент и glow */
+.block.private .block-content {
+    background: linear-gradient(
+        120deg,
+        #2b003f,
+        #6a0dad,
+        #8a2be2,
+        #c71585,
+        #ff69b4,
+        #d4af37,
+        #ff69b4,
+        #8a2be2
+    );
+    position: relative;
+    overflow: hidden;
+}
+
+.block.private .block-icon {
+    transform: rotate(-10deg);
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Пульсирующий glow */
+@keyframes pulseGlow {
+    0%, 100% {
+        filter:
+            drop-shadow(0 0 4px rgba(186, 85, 211, 0.7))
+            drop-shadow(0 0 6px rgba(138, 43, 226, 0.6))
+            drop-shadow(0 0 8px rgba(255, 255, 255, 0.6))
+            drop-shadow(0 0 10px rgba(186, 85, 211, 0.4))
+            drop-shadow(0 0 12px rgba(138, 43, 226, 0.3));
+    }
+    50% {
+        filter:
+            drop-shadow(0 0 10px rgba(186, 85, 211, 1))
+            drop-shadow(0 0 14px rgba(138, 43, 226, 0.9))
+            drop-shadow(0 0 18px rgba(255, 255, 255, 0.9))
+            drop-shadow(0 0 20px rgba(186, 85, 211, 0.6))
+            drop-shadow(0 0 24px rgba(138, 43, 226, 0.5));
+    }
+}
+
+/* Hover — поворот иконки кроме private */
+.block:not(.private):hover .block-icon {
+    transform: rotate(-10deg);
+}
+
+/* DONATE — фиксирован внизу */
+.block.donate {
+    position: fixed;
+    bottom: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+.block.donate:hover {
+    transform: translateX(-50%) scale(1.015);
+    cursor: pointer;
+}
+
+.block.donate .block-icon {
+    object-fit: contain;
+    filter: none;
+}
+
+/* Кнопка домой */
+#home-link img {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    z-index: 100;
+}

@@ -1,0 +1,72 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #f19cbb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+}
+
+.rules {
+    width: 45%;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+
+    color: #000;
+    font-size: 1.5em;
+    line-height: 1.6;
+
+    /* важно для переносов строк */
+    white-space: pre-wrap;
+}
+
+/* кастомный скролл */
+body::-webkit-scrollbar {
+    width: 1vw;
+
+    @media (min-width: 768px) and (min-height: 500px) {
+        width: 1.3vw;
+    }
+
+    @media (min-width: 1200px) and (min-height: 800px) {
+        width: 1.3vw;
+    }
+
+    @media (min-width: 1200px) and (min-height: 950px) {
+        width: 1vw;
+    }
+
+    @media (min-width: 2000px) {
+        width: 1.1vw;
+    }
+}
+
+body::-webkit-scrollbar-track {
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 7px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 2px solid white;
+    border-radius: 7px;
+}
+
+/* мобильные устройства */
+@media (max-width: 768px) {
+    .rules {
+        width: 90%;
+        font-size: 18px;
+    }
+}

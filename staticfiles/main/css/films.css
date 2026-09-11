@@ -1,0 +1,832 @@
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url('../fonts/Lato-Regular.ttf') format('opentype'),
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, html {
+    height: 100%; /* Занимаем всю высоту экрана */
+    margin: 0;    /* Убираем отступы по умолчанию */
+    font-family: Arial, sans-serif;
+}
+
+.main-container {
+    height: 100vh;
+    position: fixed;
+    top: 47px;
+    overflow: hidden;
+    background-color: #f19cbb;
+}
+
+.inline-container {
+  display: inline-block; /* Размещает элементы в одну строку */
+  margin-right: 10px;  /* Добавляет отступ справа между элементами */
+}
+
+.underline {
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+}
+
+#home-link {
+    position: fixed;
+    top: 5px;
+    right: 7px;
+    z-index: 100;
+}
+
+#home-link img {
+    /*position: fixed;*/
+    width: 50px;
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.tabs-top-panel {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    z-index: 0;
+    background-color: #ffdde7;
+}
+
+.tabs {
+    display: flex;
+    position: absolute;
+    top: 12px;
+    height: 25px;
+    padding: 0;
+}
+
+.tab {
+    position: relative;
+    width: auto;
+    height:100%;
+    margin-left: 10px; /* Отступ слева для вкладок */
+    margin-bottom: 0; /* Убираем отступ снизу */
+    padding: 6px 10px 5px 10px; /* Внутренний отступ для вкладок */
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: #ffdde7; /* Цвет неактивных вкладок */
+    border: 2px solid #ffdde7;
+    border-bottom: none; /* Убираем нижнюю рамку */
+    border-radius: 7px 7px 0 0; /* Закругленные верхние углы */
+    /*transition: background-color 0.1s;*/
+    box-shadow: 0 -2px 5px #f19cbb;
+}
+
+.tab.active {
+    background-color: #f19cbb; /* Цвет активной вкладки */
+    box-shadow: none;
+}
+
+#tab1 {
+    margin-left: 5%;
+}
+
+.content {
+    display: none; /* Скрываем все содержимое по умолчанию */
+    width: 100vw;
+    height: calc(100vh - 50px);
+    z-index: 99;
+}
+
+/* ПАНЕЛЬ С ОПЦИЯМИ */
+.option-panel {
+    display: flex;
+    width: 18vw;
+    padding: 0px;
+    height: 100%;
+}
+
+.option-block {
+    width: 90%;
+    margin: 4vh auto auto 2vw;
+}
+
+option {
+    background-color: #fff;
+    color: #333;
+}
+
+select#month-select,
+select#nickname-select {
+    width: 120%;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background-color: #fff;
+    padding-left: 15px;
+    margin-top: 7px;
+    font-size: 0.9vw;
+    appearance: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+select#month-select:hover,
+select#nickname-select:hover {
+    cursor: pointer;
+}
+
+select#month-select:focus,
+select#nickname-select:focus {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.results-counter {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+
+    @media (min-width: 768px) and (min-height: 500px) {
+        font-size: 1em;
+    }
+
+    @media (min-width: 1200px) {
+        font-size: 1.2em;
+    }
+}
+
+.statistics-panel {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 75%;
+    font-size: 1vw;
+
+    @media (min-width: 768px) and (min-height: 500px) {
+        width: 65%;
+        font-size: 0.73em;
+    }
+
+    @media (min-width: 1200px) and (min-height: 800px) {
+        width: 78%;
+        font-size: 0.97em;
+    }
+
+    @media (min-width: 1200px) and (min-height: 950px) {
+        font-size: 1.1em;
+    }
+}
+
+/* ТАБЛИЦА */
+.main-block {
+    width: 82vw;
+    height: calc(100vh - 90px);
+    padding: 0 20px 20px 20px;
+    box-sizing: border-box; /* Чтобы padding не увеличивал ширину блока */
+    margin: 0 0 -10px 0;
+    font-size: 1em;
+
+    @media (min-width: 768px) and (min-height: 500px) {
+        padding: 0 10px 10px 0px;
+        font-size: 0.8em;
+    }
+
+    @media (min-width: 1200px) and (min-height: 800px) {
+        padding: 0 20px 20px 20px;
+        font-size: 0.8em;
+    }
+
+    @media (min-width: 1200px) and (min-height: 950px) {
+        padding: 0 20px 20px 20px;
+        font-size: 1em;
+    }
+}
+
+.table-wrapper {
+    height: 100%;
+    overflow: auto;
+    margin-top: 20px;
+    border: 10px solid white;
+    border-radius: 20px;
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    /*border: 1px solid #ffc0cb;*/
+    border: none;
+    padding: 8px;
+    text-align: left;
+}
+
+tr {
+    /*background-color: #f19cbb;*/
+}
+
+th {
+    position: sticky;               /* Включаем возможность фиксации */
+    top: 0;                         /* Фиксируем верхнюю границу */
+    background-color: #f19cbb;      /* Устанавливаем нужный цвет фона */
+    z-index: 100;
+}
+
+/* Цвет фона четных строк */
+tbody tr:nth-child(even) {
+    background-color: #ffebee;   /* Светлый оттенок розового */
+}
+
+/* Цвет фона нечётных строк */
+tbody tr:nth-child(odd) {
+    background-color: #ffdde7;   /* Немного тёмнее предыдущий оттенок */
+}
+
+tbody tr:hover {
+    background-color: #f19cbb !important; /* Небольшое затемнение при наведении */
+}
+
+/* 1280x720 1366x768 */
+@media (min-width: 768px) and (min-height: 500px) {
+    .datetime-col {
+        width: 8.5vw;
+        min-width: 8.5vw;
+    }
+
+    .film-name-col {
+        width: 13.5vw;
+        min-width: 13.5vw;
+    }
+
+    .year-col {
+        width: 5vw;
+        min-width: 5vw;
+        text-align: center;
+    }
+
+    .top-col {
+        width: 5vw;
+        min-width: 5vw;
+        text-align: center;
+    }
+
+    .chance-col {
+        width: 6vw;
+        min-width: 6vw;
+        text-align: center;
+    }
+
+    .winners-col {
+        width: 7vw;
+        min-width: 7vw;
+    }
+
+    .kp-rating-col {
+        width: 2vw;
+        min-width: 2vw;
+        text-align: center;
+    }
+
+    .imdb-raiting-col {
+        width: 3vw;
+        min-width: 3vw;
+        text-align: center;
+    }
+
+    .kp-link-col {
+        width: 6vw;
+        min-width: 6vw;
+        text-align: center;
+    }
+
+    .view-type-col {
+        width: 4vw;
+        min-width: 4vw;
+        text-align: center;
+    }
+
+    .auction-type-col {
+        width: 3vw;
+        min-width: 3vw;
+        text-align: center;
+    }
+}
+
+/* 1536x864 1440x900 */
+@media (min-width: 1200px) and (min-height: 800px) {
+    .datetime-col {
+        width: 8vw;
+        min-width: 8vw;
+    }
+
+    .film-name-col {
+        width: 13vw;
+        min-width: 13vw;
+    }
+
+    .year-col {
+        width: 5vw;
+        min-width: 5vw;
+        text-align: center;
+    }
+
+    .top-col {
+        width: 4vw;
+        min-width: 4vw;
+        text-align: center;
+    }
+
+    .chance-col {
+        width: 6vw;
+        min-width: 6vw;
+        text-align: center;
+    }
+
+    .winners-col {
+        width: 6vw;
+        min-width: 6vw;
+    }
+
+    .kp-rating-col {
+        width: 2vw;
+        min-width: 2vw;
+        text-align: center;
+    }
+
+    .imdb-raiting-col {
+        width: 2vw;
+        min-width: 2vw;
+        text-align: center;
+    }
+
+    .kp-link-col {
+        width: 5vw;
+        min-width: 5vw;
+        text-align: center;
+    }
+
+    .view-type-col {
+        width: 5vw;
+        min-width: 5vw;
+        text-align: center;
+    }
+
+    .auction-type-col {
+        width: 3vw;
+        min-width: 3vw;
+        text-align: center;
+    }
+}
+
+/* 1920x1080 2560x1440 */
+@media (min-width: 1200px) and (min-height: 950px) {
+    .datetime-col {
+        width: 8.5vw;
+        min-width: 8.5vw;
+    }
+
+    .film-name-col {
+        width: 13vw;
+        min-width: 13vw;
+    }
+
+    .year-col {
+        width: 5vw;
+        min-width: 5vw;
+        text-align: center;
+    }
+
+    .top-col {
+        width: 4vw;
+        min-width: 4vw;
+        text-align: center;
+    }
+
+    .chance-col {
+        width: 6vw;
+        min-width: 6vw;
+        text-align: center;
+    }
+
+    .winners-col {
+        width: 6vw;
+        min-width: 6vw;
+    }
+
+    .kp-rating-col {
+        width: 3vw;
+        min-width: 3vw;
+        text-align: center;
+    }
+
+    .imdb-raiting-col {
+        width: 3vw;
+        min-width: 3vw;
+        text-align: center;
+    }
+
+    .kp-link-col {
+        width: 7vw;
+        min-width: 7vw;
+        text-align: center;
+    }
+
+    .view-type-col {
+        width: 5vw;
+        min-width: 5vw;
+        text-align: center;
+    }
+
+    .auction-type-col {
+        width: 7vw;
+        min-width: 7vw;
+        text-align: center;
+    }
+}
+
+/* КОНЕЦ СТИЛЕЙ ТАБЛИЦЫ */
+
+button:hover {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Настройки для WebKit-браузеров (Chrome, Safari): */
+::-webkit-scrollbar {
+    width: 15px;                 /* Ширина скроллбара */
+}
+
+::-webkit-scrollbar-track {
+    background: #f19cbb;         /* Фон полосы прокрутки */
+    border-radius: 10px;         /* Округлые углы */
+    margin-top: 50px;
+    margin-bottom: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffdde7;         /* Фон указателя (бегунка) */
+    border-radius: 7px;         /* Округлые края бегунка */
+    transition: all .3s ease;    /* Плавный переход эффектов */
+}
+
+a {
+    color: #551A8B;
+}
+
+/* ВКЛАДКА "ЧТО ХОЧУ ПОСМОТРЕТЬ */
+.info-block {
+    width: 30vw;
+    font-family: Arial, sans-serif;
+    font-size: 1.5em;
+    color: white;
+    margin: 7vh auto 0;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    @media (min-width: 768px) and (min-height: 500px) {
+        font-size: 1.1em;
+    }
+
+    @media (min-width: 1200px) and (min-height: 800px) {
+        font-size: 1.2em;
+    }
+
+    @media (min-width: 1200px) and (min-height: 950px) {
+        font-size: 1.6em;
+    }
+
+    @media (min-width: 2000px) {
+        font-size: 2.2em;
+    }
+}
+
+.info-block button {
+    /*margin-left: 2vw;*/
+    background-color: #ffdde7;
+    border: 3px solid white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.7em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.info-block button:hover {
+  background-color: pink; /* Темно-зеленый */
+}
+
+#buttons-box {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    margin: auto;
+}
+
+.film-main-container {
+    width: 60vw;
+    height: 92vh;
+    overflow-y: auto;
+    margin: 2vh auto auto auto;
+
+    @media (min-width: 768px) and (min-height: 500px) {
+        height: 90vh;
+    }
+
+    @media (min-width: 1200px) and (min-height: 800px) {
+        height: 91.5vh;
+    }
+
+    @media (min-width: 1200px) and (min-height: 950px) {
+        height: 92vh;
+    }
+}
+
+.film-main-container::-webkit-scrollbar {
+    @media (min-width: 768px) and (min-height: 500px) {
+        width: 1.5vw;
+    }
+
+    @media (min-width: 1200px) and (min-height: 800px) {
+        width: 1.5vw;
+    }
+
+    @media (min-width: 1200px) and (min-height: 950px) {
+        width: 1vw;
+    }
+}
+
+.film-main-container::-webkit-scrollbar-track {
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 7px;
+    margin-top: 1vh;
+}
+
+.film-main-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 2px solid white;
+    border-radius: 7px;
+}
+
+details {
+    color: black;
+    font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: 5px;
+    margin-right: 15px;
+    summary {
+        list-style: none; /* Убираем маркеры списка */
+        cursor: pointer; /* Указываем, что элемент кликабельный */
+        font-size: 1.8em;
+        border: 4px solid white;
+        border-radius: 15px;
+        margin-bottom: 5px;
+        padding: 5px;
+        padding-left: 15px;
+        background-color: #ffdde7;
+    }
+
+    summary::-webkit-details-marker {
+        display: none; /* Убираем треугольник */
+    }
+
+    .film-content-box {
+        font-size: 1.4em;
+        margin-right: 20px;
+        margin-left: 30px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+
+        @media (min-width: 768px) and (min-height: 500px) {
+            font-size: 1.1em;
+        }
+
+        @media (min-width: 1200px) and (min-height: 800px) {
+            font-size: 1.3em;
+        }
+
+        @media (min-width: 1200px) and (min-height: 950px) {
+            font-size: 1.4em;
+        }
+
+        @media (min-width: 2000px) {
+            font-size: 2em;
+        }
+    }
+}
+
+/* стили для информации о фильме (кроме описания) */
+.film-container {
+    display: flex; /* Используем Flexbox для расположения элементов */
+    width: 100%;
+    min-height: 40vh; /* Начальная высота контейнера (например, 50% от высоты viewport) */
+    font-family: Arial, sans-serif;
+}
+
+.image-container {
+    flex: 0 0 auto; /* Не сжимается и не растягивается */
+    height: 40vh; /* Ширина контейнера изображения (например, 40%) */
+    display: flex;
+    align-items: center; /* Вертикальное выравнивание изображения по центру */
+    justify-content: center; /* Горизонтальное выравнивание изображения по центру */
+}
+
+.film-poster {
+    display: block; /* Убираем отступы снизу у inline-элементов */
+    max-width: 100%; /* Изображение не выходит за пределы контейнера */
+    max-height: 100%; /*  Изображение не выходит за пределы контейнера */
+    object-fit: contain; /*  Сохраняем пропорции изображения и вмещаем его в контейнер */
+}
+
+.text-container {
+    flex: 1; /* Занимает оставшееся пространство */
+    display: flex;
+    flex-direction: column; /* Выстраиваем текстовые блоки в колонку */
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.text-container hr {
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 1.5vh;       /* Убираем верхний и нижний отступ */
+    height: 1px;     /* Устанавливаем высоту линии */
+    border: none;    /* Убираем стандартную рамку */
+    background-color: grey; /* Устанавливаем цвет линии */
+}
+
+.text-block {
+    display: flex;
+    box-sizing: border-box;
+    font-size: 0.7em; /* Адаптивный размер шрифта (viewport width) */
+}
+
+.text-block a {
+    align-self: flex-start;   /*  Выравнивание ссылки по низу text-block */
+    white-space: nowrap; /* Запрещаем перенос текста внутри ссылки */
+}
+
+/* Адаптивность для разных размеров экрана (медиа запросы) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Перестраиваем в колонку на маленьких экранах */
+    height: auto; /* Автоматическая высота */
+  }
+
+  .image-container {
+    width: 100%; /* Изображение занимает всю ширину */
+  }
+
+  .text-container {
+    width: 100%; /* Текстовые блоки занимают всю ширину */
+  }
+  .text-block {
+    font-size: 3vw;
+  }
+}
+/* КОНЕЦ СТИЛЕЙ ЧТО ХОЧУ ПОСМОТРЕТЬ */
+
+#films-tierlist {
+    margin: auto;
+    height: calc(100vh - 70px);
+}
+
+#content2 {
+    display: none;
+}
+
+.content.active {
+    display: flex; /* Показываем только активное содержимое */
+}
+
+#content2.active {
+    display: flex;
+    justify-content: space-around; /* Равномерно распределяет пространство между элементами */
+}
+
+/* ПРАВИЛА КИНОАУКА */
+#content4 div {
+    display: block;
+    width: 45vw;
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    margin: auto;
+    word-wrap: break-all;
+    white-space: pre-wrap;
+
+    @media (min-width: 768px) and (min-height: 500px) {
+        font-size: 1.2em;
+    }
+
+    @media (min-width: 1200px) and (min-height: 800px) {
+        font-size: 1.35em;
+    }
+
+    @media (min-width: 1200px) and (min-height: 950px) {
+        font-size: 1.5em;
+    }
+
+    @media (min-width: 2000px) {
+        font-size: 2.3em;
+    }
+}
+
+/* СПРАВКА */
+.info-text {
+    width: 50vw;
+    height: 98%;
+    margin: auto;
+    font-size: 1.5em;
+
+    @media (min-width: 768px) and (min-height: 500px) {
+        font-size: 1em;
+    }
+
+    @media (min-width: 1200px) and (min-height: 800px) {
+        font-size: 1.4em;
+    }
+
+    @media (min-width: 1200px) and (min-height: 950px) {
+        font-size: 1.4em;
+    }
+
+    @media (min-width: 2000px) {
+        font-size: 2em;
+    }
+}
+
+.info-text p {
+    text-align: center;
+}
+
+.red-text {
+    color: red;
+    font-size: 1.8em;
+}
+
+#content5 {
+    margin: 0;
+    display: none; /* Скрываем все содержимое по умолчанию */
+    flex-wrap: wrap; /* Позволяет переносить элементы на следующий ряд */
+    overflow-y: auto;
+}
+
+/* кастомный скролл */
+#content5::-webkit-scrollbar {
+    width: 1vw;
+
+    @media (min-width: 768px) and (min-height: 500px) {
+        width: 1.3vw;
+    }
+
+    @media (min-width: 1200px) and (min-height: 800px) {
+        width: 1.3vw;
+    }
+
+    @media (min-width: 1200px) and (min-height: 950px) {
+        width: 1vw;
+    }
+
+    @media (min-width: 2000px) {
+        width: 1.1vw;
+    }
+}
+
+#content5::-webkit-scrollbar-track {
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 7px;
+}
+
+#content5::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 2px solid white;
+    border-radius: 7px;
+}
+
+#content5.active {
+    display: flex; /* Показываем только активное содержимое */
+}
+
+.image-info-container {
+    display: flex;
+    justify-content: center;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-for-info {
+    width: 85vw;
+}
+
+.image-2 {
+    width: 35vw;
+}

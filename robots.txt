@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /tmp/
+Sitemap: https://yrarami.ru/sitemap.xml

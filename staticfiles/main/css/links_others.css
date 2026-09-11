@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 2vw;
+    row-gap: 1vh;
+    width: 100vw;
+    min-height: 100%;
+    background-color: #f19cbb;
+    padding-top: 10vh;
+    padding-bottom: 2vh;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    background-color: #ffdde7;
+    border: 9px solid white;
+    border-radius: 40px;
+    min-width: 420px;
+    max-width: 22vw;
+    max-height: 17vh;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+}
+
+.block:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    box-shadow: 0 0 35px rgba(255, 255, 255, 1);
+}
+
+a {
+    cursor: default;
+    text-decoration: none;
+}
+
+a img {
+    height: 15vh;
+    border-radius: 35px;
+}
+
+/* Оставляем текст простым элементом span */
+.block span {
+    font-size: 1.2em;
+    color: black;
+    margin: auto 25px;
+}
+
+span.small-text {
+    font-size: 0.95em;
+}
+
+span.middle-text {
+    font-size: 1em;
+}
+
+#home-link img {
+    cursor: pointer;
+    position: fixed;
+    top: 1.5%;
+    right: 0.8%;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@media screen and (width: 2560px) and (height: 1440px) {
+    .block {
+        border-radius: 50px;
+    }
+
+    a img {
+        border-radius: 40px;
+    }
+
+    .block span {
+        font-size: 1.4em;
+    }
+
+    span.small-text {
+        font-size: 1.3em;
+    }
+
+    span.middle-text {
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width: 451px) and (max-width: 800px) {
+    .container {
+        width: 98vw;
+    }
+
+    .block {
+        border-radius: 40px;
+        min-width: 40vw;
+    }
+
+    a img {
+        height: 14vh;
+        border-radius: 30px;
+    }
+
+    .block span {
+        font-size: 0.8em;
+    }
+
+    span.small-text {
+        font-size: 0.72em;
+    }
+
+    span.middle-text {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 450px) {
+    .block {
+        border-radius: 40px;
+        min-width: 90vw;
+        max-width: 90vw;
+    }
+
+    a img {
+        height: 10vh;
+        border-radius: 30px;
+    }
+
+    .block span {
+        font-size: 0.8em;
+    }
+
+    span.small-text {
+        font-size: 0.72em;
+    }
+
+    span.middle-text {
+        font-size: 0.75em;
+    }
+}

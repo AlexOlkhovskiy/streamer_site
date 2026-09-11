@@ -1,0 +1,260 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновления сайта</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}" type="image/x-icon">
+    <link type="text/css" href="{% static 'main/css/change_list.css' %}" rel="stylesheet" />
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102653055, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102653055" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+    <div class="main-container">
+        <div id="home-link"><a href="{% url 'main_page' %}"><img id="homepage-icon" src="{% static 'main/images/favicon.png' %}" title="на главную страницу"></a></div>
+        <div class="change-list-container">
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.0.0&nbsp;&nbsp;&nbsp;06.06.2025</summary>
+                <div class="change-list-update">
+                    <ul>
+                        Сайт <a href="https://yrarami.ru" target="_blank">yrarami.ru</a>:
+                        <li>запущен сайт yrarami.ru</li>
+                        <br/>
+                        <a style="text-decoration: underline;">Telegram бот</a>:
+                        <li>в telegram чат добавлен новый telegram бот <b>@YraramiBot</b></li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.1.0&nbsp;&nbsp;&nbsp;13.06.2025</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a href="https://yrarami.ru" target="_blank">Главная</a> страница:
+                        <li>добавлены иконки со ссылками на Телеграм, Твич, Поддержать разработку сайта</li>
+                        <br/>
+                        Страница <a href="https://yrarami.ru/about" target="_blank">Обо мне</a>:
+                        <li>исправлено название страницы на вкладке браузера</li>
+                        <br/>
+                        Страница <a href="https://yrarami.ru/links" target="_blank">Ссылки</a>:
+                        <li>добавлено масштабирование текста и блоков</li>
+                        <li>исправлена обрезка иконок</li>
+                        <br/>
+                        Страница <a href="https://yrarami.ru/roulette" target="_blank">Рулетка</a>:
+                        <li>скрыты результаты где выпало "Ничего"</li>
+                        <li>исправлено название страницы на вкладке браузера</li>
+                        <li>исправлена неправильная сортировка дат в фильтре по месяцам</li>
+                        <li>добавлено масштабирование текста</li>
+                        <br/>
+                        Страница <a href="https://yrarami.ru/change_list" target="_blank">Обновления сайта</a>:
+                        <li>исправлено название страницы на вкладке браузера</li>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.2.0&nbsp;&nbsp;&nbsp;25.06.2025</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a href="https://yrarami.ru" target="_blank">Главная</a> страница:
+                        <li>добавлен раздел <a href="https://yrarami.ru/films" target="_blank">Фильмы</a></li>
+                        <br/>
+                        Страница <a href="https://yrarami.ru/roulette" target="_blank">Рулетка</a>:
+                        <li>добавлено окно с информацией о шансах выпадения наград в рулетке (при наведении на иконку процента)</li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.2.1&nbsp;&nbsp;&nbsp;30.06.2025</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a href="https://yrarami.ru" target="_blank">Главная</a> страница:
+                        <li>добавлена иконка со ссылкой на форму анонимной обратной связи по сайту</li>
+                        <br/>
+                        Страница <a href="https://yrarami.ru/roulette" target="_blank">Рулетка</a>:
+                        <li>добавлен фильтр по наградам в рулетке</li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.3.0&nbsp;&nbsp;&nbsp;23.08.2025</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a href="https://yrarami.ru" target="_blank">Главная</a> страница:
+                        <li>добавлен раздел <a href="https://yrarami.ru/schedule" target="_blank">График стримов</a></li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.4.0&nbsp;&nbsp;&nbsp;06.09.2025</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a href="https://yrarami.ru" target="_blank">Главная</a> страница:
+                        <li>страница оптимизирована под мобильные устройства</li>
+                        <li>добавлена новая иконка (сердечко) + окошко с благодарностями</li>
+                        <br/>
+                    </ul>
+                    <ul>
+                        Страница <a href="https://yrarami.ru/links" target="_blank">Ссылки</a>:
+                        <li>страница оптимизирована под мобильные устройства</li>
+                        <br/>
+                    </ul>
+                    <ul>
+                        Страница <a href="https://yrarami.ru/schedule" target="_blank">Расписание стримов</a>:
+                        <li>страница оптимизирована под мобильные устройства</li>
+                        <li>добавлена иконка (знак вопроса) с информационной сноской</li>
+                        <br/>
+                    </ul>
+                    <ul>
+                        Страница <a href="https://yrarami.ru/change_list" target="_blank">Обновления сайта</a>:
+                        <li>страница оптимизирована под мобильные устройства</li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.5.0&nbsp;&nbsp;&nbsp;07.11.2025</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a style="text-decoration: underline;">Telegram бот</a>:
+                        <li>Через бота в чате реализованы лимиты на отправку медиафайлов, файлы сверх лимита будут удаляться. 
+                            Лимиты обновляются раз в сутки.</li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.6.0&nbsp;&nbsp;&nbsp;11.11.2025</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a style="text-decoration: underline;">Telegram бот</a>:
+                        <li>Добавлена команда <b>!love</b>, которая показывает случайное число от 0% до 100% и соответствующее выпавшему диапазону текстовое 
+                            сообщение, всего 7 штук.</li>
+                        <br/>
+                        <li>Добавлена команда <b>!инфо</b>, которая показывает статистику пользователя за всё время его нахождения в телеграм чате.</li>
+                        <br/>
+                        <li>Добавлена команда <b>!команды</b>, которая показывает все команды бота.</li>
+                        <br/>
+                        <li>Добавлена команда <b>!ссылки</b>, которая показывает ссылки на основные соцсети урарами.</li>
+                        <br/>
+                        <li>Добавлена команда <b>!лимиты</b>, которая показывает оставшиеся суточные лимиты пользователя в чате на отправку медиафайлов.</li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.7.0&nbsp;&nbsp;&nbsp;19.12.2025</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a style="text-decoration: underline;">Telegram бот</a>:
+                        <li>Добавлена команда <b>!стаж</b>, которая показывает общий стаж вождения урарами с первого дня за рулём <strong>своей машины</strong>.</li>
+                        <br/>
+                        <li>Добавлена команда <b>!масинка</b>, которая показывает информацию по автомобилю урарами.</li>
+                        <br/>
+                        <li>Добавлена команда <b>!топ</b>, которая показывает лидерборд чатерсов телеграм чата за разные периоды: за всё время, за текущий год,
+                            за текущий месяц, за текущую неделю.</li>
+                        <br/>
+                        <li>Добавлена команда <b>!правила</b>, которая показывает правила телеграм чата.</li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.8.0&nbsp;&nbsp;&nbsp;04.01.2026</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a href="https://www.twitch.tv/yraramibot" target="_blank">Twitch бот</a>:
+                        <li>в twitch чат добавлен новый twitch бот <b>YraramiBot</b></li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.9.0&nbsp;&nbsp;&nbsp;06.01.2026</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a style="text-decoration: underline;">Telegram бот</a>:
+                        <li>Переработана логика команды <b>!love</b>, теперь % выпадает из определённого диапазона в зависимости от того сколько времени прошло с 
+                            последнего стрима. Так же изменены текстовые ответы бота, теперь их 16 штук.</li>
+                        <br/>
+                        <li>Добавлено автоматическое оповещение в чат от бота о начале и окончании стрима с полной статистикой о прошедшем стриме.</li>
+                        <br/>
+                        <li>Добавлена команда <b>!стрим</b>, которая показывает информацию о последнем прошедшем стриме или оповещение, что стрим ещё не закончился.</li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.10.0&nbsp;&nbsp;&nbsp;15.01.2026</summary>
+                <div class="change-list-update">
+                    <ul>
+                        Страница <a href="https://yrarami.ru/links" target="_blank">Ссылки</a>:
+                        <li>на странице изменён дизайн и оставлены только основные ссылки</li>
+                        <li>все дополнительные ссылки вынесены на страницу <a href="https://yrarami.ru/links_others" target="_blank">yrarami.ru/links_others</a></li>
+                        <br/>
+                    </ul>
+                    <ul>
+                        <a style="text-decoration: underline;">Telegram бот</a>:
+                        <li>добавлены 2 новых ответа бота на команду <b>!love</b></li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.10.1&nbsp;&nbsp;&nbsp;30.01.2026</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a href="https://www.twitch.tv/yraramibot" target="_blank">Twitch бот</a>:
+                        <li>для модераторов добавлена команда <b>!донат</b> для дублирования последнего доната в чат</li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.10.2&nbsp;&nbsp;&nbsp;05.02.2026</summary>
+                <div class="change-list-update">
+                    <ul>
+                        <a href="https://www.twitch.tv/yraramibot" target="_blank">Twitch бот</a>:
+                        <li>для модераторов и vip зрителей добавлена команда <b>!перевод</b> для перевода текста с русского на китайский (в связи с поездкой урарами в Китай)</li>
+                        <li>добавлен автоматический перевод китайских сообщений на русский (в связи с поездкой урарами в Китай)</li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+            <details onclick="toggleSpoilers(event)">
+                <summary>v1.10.3&nbsp;&nbsp;&nbsp;25.02.2026</summary>
+                <div class="change-list-update">
+                    <ul>
+                        Добавлена страница с <a href="https://yrarami.ru/tg_rules" target="_blank">правилами телеграм чата</a>
+                        <br/>
+                    </ul>
+                    <ul>
+                        <a style="text-decoration: underline;">Telegram бот</a>:
+                        <li>команда <b>!правила</b> теперь вместо самих правил присылает ссылку на <a href="https://yrarami.ru/tg_rules" target="_blank">страницу с правилами</a> на сайте</li>
+                        <li>при вступлении нового пользователя в телеграм чат бот тегает его и присылает уведомление, чтобы человек ознакомился с правилами чата</li>
+                        <br/>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </div>
+</body>
+</html>

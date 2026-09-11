@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ data.page_name|safe }}</title>
+    <meta name="description" content="{{ data.page_description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="{% static 'main/images/favicon.png' %}"/>
+    <meta property="og:image:type" content="image/png"/>
+    <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}" type="image/x-icon">
+    <script type="text/javascript" src="{% static 'main/js/scripts.js' %}"></script>
+    <link type="text/css" href="{% static 'main/css/main_page.css' %}" rel="stylesheet" />
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102653055, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102653055" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+    <div id="main-body">
+        <div id="main-page-container">
+            <div id="sections">
+                <a id="block-1" class="main-page-block" href="{% url 'about' %}" title="о стримере">Обо мне</a>
+                <a id="block-2" class="main-page-block" href="{% url 'links' %}" title="ссылки на соцсети">Ссылки</a>
+                <a id="block-3" class="main-page-block" href="{% url 'roulette' %}" title="рулетка">Рулетка</a>
+                <a id="block-4" class="main-page-block" href="{% url 'films' %}" title="просмотренные фильмы">Фильмы</a>
+                <a id="block-5" class="main-page-block" href="{% url 'schedule' %}" title="график стримов">Расписание стримов</a>
+                <a id="block-6" class="main-page-block" href="{% url 'change_list' %}" title="список изменений">Обновления сайта</a>
+                <div id="icon-container">
+                    <div id="tg"><a href="{{ data.telegram_link }}" target="_blank"><img id="tg-icon" src="{% static 'main/images/tg.png' %}" title="наш телеграм канал"></a></div>
+                    <div id="twitch"><a href="{{ data.twitch_link }}" target="_blank"><img id="twitch-icon" src="{% static 'main/images/twitch3.png' %}" title="наш твич канал"></a></div>
+                    <div id="feedback"><a href="{{ data.feedback_link }}" target="_blank"><img id="feedback-icon" src="{% static 'main/images/feedback.png' %}" title="анонимная обратная связь по сайту"></a></div>
+                    <div id="thanks">
+                        <img id="thanks-icon" src="{% static 'main/images/thanks.png' %}">
+                        <div id="thanks-popup">
+                            Большое спасибо за фидбек: <span class="twitch-color">pepemahich, maxxi_play, Darya_Sobolewa, m1notaur__</span>
+                            <br><br>
+                            Отдельная благодарность <span class="twitch-color">maxxi_play</span> за финансовую поддержку ❤️
+                        </div>
+                    </div>                    
+		<div id="donate"><a href="{{ data.donate.url_link }}" target="_blank"><img id="donate-icon" src="{% static 'main/images/donate.png' %}" title="{{ data.donate.description }}"></a></div>
+                </div>
+                <div id="version">Версия сайта: 1.10.3</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const icon = document.getElementById('thanks-icon');
+      const popup = document.getElementById('thanks-popup');
+
+      icon.addEventListener('mouseover', function() {
+        popup.style.display = 'block';
+      });
+
+      icon.addEventListener('mouseout', function() {
+        popup.style.display = 'none';
+      });
+    });
+</script>
+</html>

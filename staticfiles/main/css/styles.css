@@ -1,0 +1,95 @@
+body, html {
+    height: 100%; /* Занимаем всю высоту экрана */
+    margin: 0;    /* Убираем отступы по умолчанию */
+    font-family: 'Roboto', sans-serif; /* Roboto для основного текста */
+}
+
+.main-container {
+    display: flex;        /* Используем flexbox для расположения блоков */
+    height: 100vh;        /* Растягиваем контейнер на всю высоту экрана */
+    overflow: hidden;
+}
+
+.left-block {
+    width: 50%;          /* Левый блок занимает 50% ширины */
+    background-color: #f19cbb; /* Просто для визуализации */
+    padding: 20px;        /* Добавляем отступы внутри блока */
+    box-sizing: border-box; /* Чтобы padding не увеличивал ширину блока */
+}
+
+/*.right-block {
+    width: 50%;          /* Правый блок занимает 50% ширины */
+/*    background-color: #ffc0cb; /* Просто для визуализации */
+/*    padding: 20px;        /* Добавляем отступы внутри блока */
+/*    box-sizing: border-box; /* Чтобы padding не увеличивал ширину блока */
+/*}
+*/
+.right-block {
+  width: 50%;
+  background-color: #ffc0cb;
+  float: right;
+  padding: 10px;
+}
+
+.right-block label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.right-block input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box; /* Важно для правильного расчета ширины */
+}
+
+.right-block button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.inline-container {
+  display: inline-block; /* Размещает элементы в одну строку */
+  margin-right: 10px;  /* Добавляет отступ справа между элементами */
+}
+
+.table-wrapper {
+  overflow: auto; /* Добавляем прокрутку только для таблицы */
+  height: 95%;     /* Занимает всю доступную высоту внутри main-container */
+  margin-top: 20px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+tr {
+    background-color: #ffc0cb;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1); /* Небольшое затемнение при наведении */
+}
+
+.hidden {
+    display: none;
+}
