@@ -4,17 +4,7 @@
 {% block extrahead %}
     {{ block.super }}
     <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}" type="image/x-icon"/>
-    <link type="text/css" href="{% static 'main/css/custom_admin.css' %}" rel="stylesheet" />
 {% endblock %}
 {% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
-
-{% block branding %}
-{% if user.is_anonymous %}
-  {% include "admin/color_theme_toggle.html" %}
-{% else %}
-<a href="/instruction/" class="admin-btn" target="_blank">Страничка с инструкцией</a>
-<a href="/custom_admin_page/" class="admin-btn" target="_blank">Кастомная админка</a>
-{% endif %}
-{% endblock %}
 
 {% block nav-global %}{% endblock %}

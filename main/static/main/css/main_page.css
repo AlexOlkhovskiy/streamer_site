@@ -20,8 +20,8 @@ button {
 
 #main-page-container {
     display: flex;
-    justify-content: center; /* Выравнивание по горизонтали */
-    align-items: center; /* Выравнивание по вертикали, если необходимо */
+    justify-content: center; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
+    align-items: center; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     background-color: #f19cbb;
     height: 100vh;
 }
@@ -47,9 +47,7 @@ button {
 #block-3,
 #block-4,
 #block-5,
-#block-6,
-#block-7,
-#block-8 {
+#block-6 {
     width: 45%;
     margin: 40px 30px 0;
     z-index: 5;
@@ -90,9 +88,7 @@ button {
 #block-3:hover,
 #block-4:hover,
 #block-5:hover,
-#block-6:hover,
-#block-7:hover,
-#block-8:hover {
+#block-6:hover {
     cursor: pointer;
     scale: 1.02;
 }
@@ -119,10 +115,6 @@ button {
     }
 }
 
-.grey {
-    background-color: grey !important;
-}
-
 #icon-container {
     position: fixed;
     display: flex;
@@ -131,13 +123,6 @@ button {
     z-index: 100;
     transform: translateX(-50%);
 }
-/*
-#donate img {
-    height: 4vw;
-    padding: 15px;
-    margin-bottom: -24vh;
-}*/
-
 #thanks img,
 #donate img,
 #tg img,

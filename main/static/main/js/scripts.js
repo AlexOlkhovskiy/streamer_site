@@ -1,5 +1,5 @@
 function preventUncheck(checkbox) {
-  // Если пытаются снять галку с первого чекбокса, возвращаем ее обратно
+  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   if (checkbox.id === 'checkbox1' && !checkbox.checked) {
     checkbox.checked = true;
   }
@@ -10,7 +10,7 @@ function toggleReady(checkbox) {
   const readyCheckbox = document.getElementById('checkbox2');
   const notReadyCheckbox = document.getElementById('checkbox3');
 
-  // Снимаем галки с других чекбоксов
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   if (checkbox.id === 'checkbox1' && checkbox.checked) {
     readyCheckbox.checked = false;
     notReadyCheckbox.checked = false;
@@ -22,16 +22,16 @@ function toggleReady(checkbox) {
     readyCheckbox.checked = false;
   }
 
-  // Если снимают галку со второго или третьего чекбокса,
-  // автоматически активируем первый чекбокс
+  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   if ((checkbox.id === 'checkbox2' || checkbox.id === 'checkbox3') && !checkbox.checked) {
     allCheckbox.checked = true;
   }
 
   const rows = document.querySelectorAll('tbody tr');
 
-  // Показываем все строки
-  // класс check-ready означает, что строка должна быть активирована (показана) чекбоксом
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+  // пїЅпїЅпїЅпїЅпїЅ check-ready пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   if (allCheckbox.checked) {
     rows.forEach(row => {
       if (row.classList.contains('month-active') && row.classList.contains('nickname-active') && row.classList.contains('result-active')) {
@@ -40,13 +40,13 @@ function toggleReady(checkbox) {
       row.classList.add('check-ready');
     })
   } else if (readyCheckbox.checked) {
-    // Скрываем строки с классом "not-ready"
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ "not-ready"
     rows.forEach(row => {
       if (row.classList.contains('not-ready')) {
         row.classList.add('hidden');
         row.classList.remove('check-ready');
       } else {
-        // если строка не содержит отметку активированного фильтром месяца, никнейма или награды, то не показываем её
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ
         if (row.classList.contains('month-active') && row.classList.contains('nickname-active') && row.classList.contains('result-active')) {
             row.classList.remove('hidden');
         }
@@ -54,13 +54,13 @@ function toggleReady(checkbox) {
       }
     });
   } else if (notReadyCheckbox.checked) {
-    // Скрываем строки с классом "ready"
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ "ready"
     rows.forEach(row => {
       if (row.classList.contains('ready')) {
         row.classList.add('hidden');
         row.classList.remove('check-ready');
       } else {
-        // если строка не содержит отметку активированного фильтром месяца, никнейма или награды, то не показываем её
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ
         if (row.classList.contains('month-active') && row.classList.contains('nickname-active') && row.classList.contains('result-active')) {
             row.classList.remove('hidden');
         }
@@ -68,7 +68,7 @@ function toggleReady(checkbox) {
       }
     });
   } else {
-    // Если ни один чекбокс не выбран, показываем все строки
+    // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     rows.forEach(row => {
       if (row.classList.contains('month-active') && row.classList.contains('nickname-active') && row.classList.contains('result-active')) {
           row.classList.remove('hidden');
@@ -79,31 +79,7 @@ function toggleReady(checkbox) {
   updateResultsCounter();
 }
 
-//function openAdminPage() {
-//  window.open('/admin/main/roulette/add/', '_blank');
-//}
 
-//function openInfoBlock(row) {
-//  const datetime = row.cells[0].textContent;
-//  const username = row.cells[1].textContent;
-//  const ready = row.cells[2].textContent;
-//  const result = row.cells[3].textContent;
-//  const order = row.cells[4].textContent;
-//
-//  document.getElementById('info-datetime').value = datetime;
-//  document.getElementById('info-username').value = username;
-//  document.getElementById('info-ready').value = ready;
-//  document.getElementById('info-result').value = result;
-//  document.getElementById('info-order').value = order;
-//}
-
-//document.getElementById('editForm').addEventListener('submit', function(event) {
-//  event.preventDefault(); // Предотвращаем стандартную отправку формы
-//  // Здесь будет код для отправки данных на сервер (например, с использованием fetch или XMLHttpRequest)
-//  alert('Форма отправлена (имитация).  Здесь должен быть код отправки данных на сервер.');
-//});
-const MONTHS_RU = { 1: 'СЏРЅРІР°СЂСЏ', 2: 'С„РµРІСЂР°Р»СЏ', 3: 'РјР°СЂС‚Р°', 4: 'Р°РїСЂРµР»СЏ', 5: 'РјР°СЏ', 6: 'РёСЋРЅСЏ', 7: 'РёСЋР»СЏ', 8: 'Р°РІРіСѓСЃС‚Р°',
-                    9: 'СЃРµРЅС‚СЏР±СЂСЏ', 10: 'РѕРєС‚СЏР±СЂСЏ', 11: 'РЅРѕСЏР±СЂСЏ', 12: 'РґРµРєР°Р±СЂСЏ' };
 const MONTH_RU_2 = {
     'СЏРЅРІР°СЂСЏ': 'СЏРЅРІР°СЂСЊ',
     'С„РµРІСЂР°Р»СЏ': 'С„РµРІСЂР°Р»СЊ',
@@ -119,7 +95,7 @@ const MONTH_RU_2 = {
     'РґРµРєР°Р±СЂСЏ': 'РґРµРєР°Р±СЂСЊ',
 }
 
-// Функция для фильтрации записей по выбранному месяцу
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 function filterByMonth() {
     const selectElement = document.querySelector('#month-select');
     const selectedMonthYear = selectElement.value.toLowerCase();
@@ -129,7 +105,7 @@ function filterByMonth() {
         return;
     }
 
-    // Сокрытие строк, которые не относятся к выбранному месяцу
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     rows.forEach(row => {
         if (selectedMonthYear != 'all') {
             const month = row.cells[0].innerText.split(' ')[1];
@@ -157,7 +133,7 @@ function filterByMonth() {
     updateResultsCounter();
 }
 
-// Функция для фильтрации записей по выбранному никнейму
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 function filterByNickname() {
     const selectElement = document.querySelector('#nickname-select');
     const selectedNickname = selectElement.value;
@@ -191,7 +167,7 @@ function filterByNickname() {
     updateResultsCounter();
 }
 
-// Функция для фильтрации записей по выбранной награде в рулетке
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 function filterByResult() {
     const selectElement = document.querySelector('#result-select');
     const selectedResult = selectElement.value;
@@ -227,7 +203,7 @@ function filterByResult() {
 
 function updateResultsCounter() {
     const rows = Array.from(document.querySelectorAll('#results-table-body > tr'));
-    // Показываем все строки по умолчанию
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     let counter = 0;
     rows.forEach(row => {
         if (!row.classList.contains('hidden')) { counter++; }
@@ -235,15 +211,4 @@ function updateResultsCounter() {
     document.querySelector('.results-counter').querySelector('span').innerText = `Р’СЃРµРіРѕ Р·Р°РїРёСЃРµР№: ${counter}`;
 }
 
-// закрытие всех открытых спойлеров при открытии нового
-function toggleSpoilers(event) {
-    const summaries = document.querySelectorAll('.faq-container summary');
 
-    summaries.forEach(summary => {
-        const details = summary.parentElement;
-        // Закрываем все спойлеры, кроме того, на который кликнули
-        if (details !== event.currentTarget) {
-            details.removeAttribute('open'); // Закрываем спойлер
-        }
-    });
-}

@@ -83,20 +83,6 @@ details {
     }
 }
 
-.info-block {
-    width: 100%;
-    font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1.8em;
-    color: white;
-    margin: 6vh auto 6vh;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
-
-.info-block em {
-    display: inline-block;
-}
-
 #home-link img {
     position: fixed;
     width: 70px;

@@ -16,41 +16,10 @@ body {
     margin: auto;
 }
 
-.info-text {
-    font-size: 50px;
-    margin-bottom: 5%;         /* Расстояние между текстом и кнопкой */
-    text-align: center;          /* Выравнивание текста по центру */
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
 .info-text-2 {
     font-size: 50px;
     margin-bottom: 5%;         /* Расстояние между текстом и кнопкой */
     text-align: center;          /* Выравнивание текста по центру */
-}
-
-.animation {
-    font-size: 160px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    border: 15px solid white;
-    border-radius: 100px;
-    box-shadow: 0 0 35px 5px rgba(148, 0, 211, 0.7);
-    padding: 50px;
-
-    animation-name: pulse;
-    animation-duration: 2s;           /* Длительность одной итерации */
-    animation-timing-function: ease-in-out; /* Тип кривой ускорения */
-    animation-iteration-count: infinite; /* Повтор бесконечное число раз */
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);           /* Исходный размер */
-    }
-    50% {
-        transform: scale(1.03);         /* Максимальный масштаб */
-    }
 }
 
 #home-link img {

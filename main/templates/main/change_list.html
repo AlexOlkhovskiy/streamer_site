@@ -7,28 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}" type="image/x-icon">
     <link type="text/css" href="{% static 'main/css/change_list.css' %}" rel="stylesheet" />
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
-       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-       m[i].l=1*new Date();
-       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-       ym(102653055, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true
-       });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/102653055" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
 </head>
 <body>
     <div class="main-container">
         <div id="home-link"><a href="{% url 'main_page' %}"><img id="homepage-icon" src="{% static 'main/images/favicon.png' %}" title="на главную страницу"></a></div>
         <div class="change-list-container">
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.0.0&nbsp;&nbsp;&nbsp;06.06.2025</summary>
                 <div class="change-list-update">
                     <ul>
@@ -41,7 +25,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.1.0&nbsp;&nbsp;&nbsp;13.06.2025</summary>
                 <div class="change-list-update">
                     <ul>
@@ -66,7 +50,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.2.0&nbsp;&nbsp;&nbsp;25.06.2025</summary>
                 <div class="change-list-update">
                     <ul>
@@ -79,7 +63,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.2.1&nbsp;&nbsp;&nbsp;30.06.2025</summary>
                 <div class="change-list-update">
                     <ul>
@@ -92,7 +76,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.3.0&nbsp;&nbsp;&nbsp;23.08.2025</summary>
                 <div class="change-list-update">
                     <ul>
@@ -102,7 +86,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.4.0&nbsp;&nbsp;&nbsp;06.09.2025</summary>
                 <div class="change-list-update">
                     <ul>
@@ -129,7 +113,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.5.0&nbsp;&nbsp;&nbsp;07.11.2025</summary>
                 <div class="change-list-update">
                     <ul>
@@ -140,7 +124,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.6.0&nbsp;&nbsp;&nbsp;11.11.2025</summary>
                 <div class="change-list-update">
                     <ul>
@@ -159,7 +143,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.7.0&nbsp;&nbsp;&nbsp;19.12.2025</summary>
                 <div class="change-list-update">
                     <ul>
@@ -176,7 +160,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.8.0&nbsp;&nbsp;&nbsp;04.01.2026</summary>
                 <div class="change-list-update">
                     <ul>
@@ -187,7 +171,7 @@
                 </div>
             </details>
 
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.9.0&nbsp;&nbsp;&nbsp;06.01.2026</summary>
                 <div class="change-list-update">
                     <ul>
@@ -202,13 +186,13 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.10.0&nbsp;&nbsp;&nbsp;15.01.2026</summary>
                 <div class="change-list-update">
                     <ul>
                         Страница <a href="https://yrarami.ru/links" target="_blank">Ссылки</a>:
                         <li>на странице изменён дизайн и оставлены только основные ссылки</li>
-                        <li>все дополнительные ссылки вынесены на страницу <a href="https://yrarami.ru/links_others" target="_blank">yrarami.ru/links_others</a></li>
+                        <li>все дополнительные ссылки вынесены на отдельную страницу</li>
                         <br/>
                     </ul>
                     <ul>
@@ -218,7 +202,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.10.1&nbsp;&nbsp;&nbsp;30.01.2026</summary>
                 <div class="change-list-update">
                     <ul>
@@ -228,7 +212,7 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.10.2&nbsp;&nbsp;&nbsp;05.02.2026</summary>
                 <div class="change-list-update">
                     <ul>
@@ -239,16 +223,16 @@
                     </ul>
                 </div>
             </details>
-            <details onclick="toggleSpoilers(event)">
+            <details>
                 <summary>v1.10.3&nbsp;&nbsp;&nbsp;25.02.2026</summary>
                 <div class="change-list-update">
                     <ul>
-                        Добавлена страница с <a href="https://yrarami.ru/tg_rules" target="_blank">правилами телеграм чата</a>
+                        Добавлена страница с правилами телеграм чата
                         <br/>
                     </ul>
                     <ul>
                         <a style="text-decoration: underline;">Telegram бот</a>:
-                        <li>команда <b>!правила</b> теперь вместо самих правил присылает ссылку на <a href="https://yrarami.ru/tg_rules" target="_blank">страницу с правилами</a> на сайте</li>
+                        <li>команда <b>!правила</b> теперь вместо самих правил присылает ссылку на страницу с правилами на сайте</li>
                         <li>при вступлении нового пользователя в телеграм чат бот тегает его и присылает уведомление, чтобы человек ознакомился с правилами чата</li>
                         <br/>
                     </ul>

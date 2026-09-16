@@ -1,10 +1,3 @@
-@font-face {
-  font-family: 'Lato-Regular';
-  src: url('../fonts/Lato-Regular.ttf') format('opentype'),
-  font-weight: normal;
-  font-style: normal;
-}
-
 body, html {
     height: 100%; /* Занимаем всю высоту экрана */
     margin: 0;    /* Убираем отступы по умолчанию */
@@ -24,11 +17,6 @@ body, html {
   margin-right: 10px;  /* Добавляет отступ справа между элементами */
 }
 
-.underline {
-    text-decoration-line: underline;
-    text-decoration-thickness: 3px;
-}
-
 #home-link {
     position: fixed;
     top: 5px;
@@ -37,7 +25,6 @@ body, html {
 }
 
 #home-link img {
-    /*position: fixed;*/
     width: 50px;
     box-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
     z-index: 100;
@@ -75,7 +62,6 @@ body, html {
     border: 2px solid #ffdde7;
     border-bottom: none; /* Убираем нижнюю рамку */
     border-radius: 7px 7px 0 0; /* Закругленные верхние углы */
-    /*transition: background-color 0.1s;*/
     box-shadow: 0 -2px 5px #f19cbb;
 }
 
@@ -217,14 +203,9 @@ table {
 }
 
 th, td {
-    /*border: 1px solid #ffc0cb;*/
     border: none;
     padding: 8px;
     text-align: left;
-}
-
-tr {
-    /*background-color: #f19cbb;*/
 }
 
 th {
@@ -505,7 +486,6 @@ a {
 }
 
 .info-block button {
-    /*margin-left: 2vw;*/
     background-color: #ffdde7;
     border: 3px solid white;
     padding: 10px 22px;
@@ -674,11 +654,6 @@ details {
 
 /* Адаптивность для разных размеров экрана (медиа запросы) */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Перестраиваем в колонку на маленьких экранах */
-    height: auto; /* Автоматическая высота */
-  }
-
   .image-container {
     width: 100%; /* Изображение занимает всю ширину */
   }
@@ -816,11 +791,6 @@ details {
 .image-info-container {
     display: flex;
     justify-content: center;
-}
-
-.image-container {
-    position: relative;
-    display: inline-block;
 }
 
 .image-for-info {
